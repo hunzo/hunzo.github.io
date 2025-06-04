@@ -1,3 +1,4 @@
-theme: jekyll-theme-minimal
-title: Hunzo's homepage
-description: Bookmark this to keep an eye on my project updates!
+title: เว็บไซต์ของฉัน
+description: เว็บไซต์ตัวอย่างจาก Jekyll + GitHub Pages
+theme: null
+markdown: kramdown
