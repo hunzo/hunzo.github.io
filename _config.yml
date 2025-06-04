@@ -1,4 +1,4 @@
 title: เว็บไซต์ของฉัน
 description: เว็บไซต์ตัวอย่างจาก Jekyll + GitHub Pages
-theme: null
+theme: jekyll-theme-minimal
 markdown: kramdown
