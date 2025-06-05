@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "โพสต์ตัวอย่างที่ 1"
+title: "example post 1"
 date: 2025-06-01 08:00:00 +0700
 categories: [blog]
 tags: [ตัวอย่าง, ภาษาไทย]
-author: สุรพงศ์
+author: surapong.n
 ---
 
 > บทความนี้เป็นบทความตัวอย่างที่เขียนเพื่อแสดงการใช้ Jekyll กับธีม Minimal Mistakes

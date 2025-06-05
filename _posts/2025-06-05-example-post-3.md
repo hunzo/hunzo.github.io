@@ -45,7 +45,7 @@ lvdisplay
 lvextend -l +100%FREE /dev/vol_group_name/logical_volume
 ```
 
-- or
+> or
 
 ```bash
 
