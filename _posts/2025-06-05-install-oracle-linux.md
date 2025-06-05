@@ -7,9 +7,7 @@ tags: [linux, oracle, database]
 author: takraw
 ---
 
-# Install Oracle Linux 6.8
-
-- ref . [install oracle linux 6.8 @oracle base](https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6)
+> ref . [install oracle linux 6.8 @oracle base](https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6)
 
 ## Install Software List from GUI
 

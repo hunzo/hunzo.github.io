@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T16:22:59+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<h1 id="install-oracle-linux-68">Install Oracle Linux 6.8</h1>
-
-<ul>
-  <li>ref . <a href="https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6">install oracle linux 6.8 @oracle base</a></li>
-</ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T16:31:32+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<blockquote>
+  <p>ref . <a href="https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6">install oracle linux 6.8 @oracle base</a></p>
+</blockquote>
 
 <h2 id="install-software-list-from-gui">Install Software List from GUI</h2>
 
@@ -346,7 +344,7 @@ eject
 <h2 id="automatic-setup">Automatic setup</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yum <span class="nb">install </span>oracle-rdbms-server-11gR2-preinstall
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="oracle" /><category term="database" /><summary type="html"><![CDATA[Install Oracle Linux 6.8]]></summary></entry><entry><title type="html">Linux LVM Management</title><link href="http://localhost:4000/blog/2025/06/05/lvm.html" rel="alternate" type="text/html" title="Linux LVM Management" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/lvm</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/lvm.html"><![CDATA[<h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="oracle" /><category term="database" /><summary type="html"><![CDATA[ref . install oracle linux 6.8 @oracle base]]></summary></entry><entry><title type="html">Linux LVM Management</title><link href="http://localhost:4000/blog/2025/06/05/lvm.html" rel="alternate" type="text/html" title="Linux LVM Management" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/lvm</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/lvm.html"><![CDATA[<h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
 
 <h2 id="add-disk">Add Disk</h2>
 
@@ -430,4 +428,11 @@ xfs_growfs /MOUNT_POINT
 <h2 id="run-server">run server</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="gem" /><category term="ruby" /><summary type="html"><![CDATA[install dependency]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="gem" /><category term="ruby" /><summary type="html"><![CDATA[install dependency]]></summary></entry><entry><title type="html">Fix DHCP for Ubuntu vmware template</title><link href="http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template.html" rel="alternate" type="text/html" title="Fix DHCP for Ubuntu vmware template" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template.html"><![CDATA[<blockquote>
+  <p>Run script, shutdown and convert to template</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> /etc/machine-id
+<span class="nb">sudo touch</span> /etc/machine-id
+<span class="nb">sudo chmod </span>644 /etc/machine-id
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="vmware" /><summary type="html"><![CDATA[Run script, shutdown and convert to template]]></summary></entry></feed>

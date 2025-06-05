@@ -10,19 +10,19 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Ruby Install - Takraw’s blog</title>
-<meta name="description" content="install dependency">
+<!-- begin _includes/seo.html --><title>Fix DHCP for Ubuntu vmware template - Takraw’s blog</title>
+<meta name="description" content="Run script, shutdown and convert to template">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="th">
 <meta property="og:site_name" content="Takraw's blog">
-<meta property="og:title" content="Ruby Install">
-<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/ruby-install.html">
+<meta property="og:title" content="Fix DHCP for Ubuntu vmware template">
+<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template.html">
 
 
-  <meta property="og:description" content="install dependency">
+  <meta property="og:description" content="Run script, shutdown and convert to template">
 
 
 
@@ -37,7 +37,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/ruby-install.html">
+<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template.html">
 
 
 
@@ -122,8 +122,8 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Ruby Install">
-    <meta itemprop="description" content="install dependency">
+    <meta itemprop="headline" content="Fix DHCP for Ubuntu vmware template">
+    <meta itemprop="description" content="  Run script, shutdown and convert to template">
     <meta itemprop="datePublished" content="2025-06-05T10:30:00+07:00">
     
 
@@ -131,7 +131,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/blog/2025/06/05/ruby-install.html" itemprop="url">Ruby Install
+            <a href="http://localhost:4000/blog/2025/06/05/vmware-ubuntu-template.html" itemprop="url">Fix DHCP for Ubuntu vmware template
 </a>
           </h1>
           
@@ -142,33 +142,13 @@
 
       <section class="page__content" itemprop="text">
         
-        <h2 id="install-dependency">install dependency</h2>
+        <blockquote>
+  <p>Run script, shutdown and convert to template</p>
+</blockquote>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> git ruby-full build-essential zlib1g-dev
-</code></pre></div></div>
-
-<h2 id="install-ruby">install ruby</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'# Install Ruby Gems to ~/.gem'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">echo</span> <span class="s1">'export GEM_HOME="$HOME/.gem"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.gem/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">source</span> ~/.bashrc
-</code></pre></div></div>
-
-<h2 id="install-jekyll-and-bundler">install jekyll and bundler</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
-</code></pre></div></div>
-
-<h2 id="install-bundler">install bundler</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
-</code></pre></div></div>
-
-<h2 id="run-server">run server</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> /etc/machine-id
+<span class="nb">sudo touch</span> /etc/machine-id
+<span class="nb">sudo chmod </span>644 /etc/machine-id
 </code></pre></div></div>
 
         
@@ -190,10 +170,10 @@
       
   <nav class="pagination">
     
-      <a href="/blog/2025/06/05/lvm.html" class="pagination--pager" title="Linux LVM Management">Previous</a>
+      <a href="/blog/2025/06/05/ruby-install.html" class="pagination--pager" title="Ruby Install">Previous</a>
     
     
-      <a href="/blog/2025/06/05/vmware-ubuntu-template.html" class="pagination--pager" title="Fix DHCP for Ubuntu vmware template">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
