@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T15:33:47+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">My Blog</title><subtitle>ตัวอย่างเว็บไซต์ด้วย Jekyll + Minimal Mistakes รองรับภาษาไทย</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Linux LVM Management</title><link href="http://localhost:4000/blog/2025/06/05/example-post-3.html" rel="alternate" type="text/html" title="Linux LVM Management" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/example-post-3</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/example-post-3.html"><![CDATA[<h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
+
+<h1 id="add-disk">Add Disk</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span> /dev/sdx and create new partition
+pvcreate /dev/sdx1
+vgdisplay
+</code></pre></div></div>
+
+<h1 id="create-lvm-volume">Create LVM Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+vgcreate volumn_name /dev/sdd
+</code></pre></div></div>
+
+<h1 id="extend-volume">Extend Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgextend vol_group_name /dev/sdx1
+</code></pre></div></div>
+
+<h1 id="create-logical-volume">Create Logical Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-l</span> 20m <span class="nt">-n</span> logical_vol vol_group
+lvcreate <span class="nt">-l</span> 100%FREE <span class="nt">-n</span> logical_vol vol_group
+lvdisplay
+</code></pre></div></div>
+
+<h1 id="extend-logical-volume">Extend Logical Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+lvextend <span class="nt">-l</span> +100%FREE /dev/vol_group_name/logical_volume
+</code></pre></div></div>
+
+<blockquote>
+  <p>or</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+lvextend /dev/vol_group_name /dev/sdx1
+</code></pre></div></div>
+
+<h1 id="resize-lvm">Resize LVM</h1>
+
+<h2 id="ext-file-system">ext file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize2fs /dev/log_vol_group_name
+</code></pre></div></div>
+
+<h2 id="xfs-file-system">XFS file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+xfs_growfs /MOUNT_POINT
+</code></pre></div></div>
+
+<h2 id="ext4-file-system">ext4 file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize4fs /dev/log_vol_group_name
+</code></pre></div></div>]]></content><author><name>surapong.n</name></author><category term="blog" /><category term="linux" /><category term="lvm" /><summary type="html"><![CDATA[Step by step to add disk to LVM and resize lv]]></summary></entry><entry><title type="html">example post 2</title><link href="http://localhost:4000/blog/2025/06/02/example-post-2.html" rel="alternate" type="text/html" title="example post 2" /><published>2025-06-02T10:30:00+07:00</published><updated>2025-06-02T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/02/example-post-2</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/02/example-post-2.html"><![CDATA[<blockquote>
+  <p>บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม</p>
+</blockquote>
+
+<h2 id="โค้ดตัวอย่าง">โค้ดตัวอย่าง</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+</code></pre></div></div>]]></content><author><name>surapong.n</name></author><category term="blog" /><category term="github" /><category term="jekyll" /><summary type="html"><![CDATA[บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม]]></summary></entry><entry><title type="html">example post 1</title><link href="http://localhost:4000/blog/2025/06/01/example-post-1.html" rel="alternate" type="text/html" title="example post 1" /><published>2025-06-01T08:00:00+07:00</published><updated>2025-06-01T08:00:00+07:00</updated><id>http://localhost:4000/blog/2025/06/01/example-post-1</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/01/example-post-1.html"><![CDATA[<blockquote>
+  <p>บทความนี้เป็นบทความตัวอย่างที่เขียนเพื่อแสดงการใช้ Jekyll กับธีม Minimal Mistakes</p>
+</blockquote>
+
+<h2 id="หัวข้อ">หัวข้อ</h2>
+
+<p>นี่คือตัวอย่างเนื้อหาที่เขียนเป็นภาษาไทยได้สมบูรณ์</p>]]></content><author><name>surapong.n</name></author><category term="blog" /><category term="ตัวอย่าง" /><category term="ภาษาไทย" /><summary type="html"><![CDATA[บทความนี้เป็นบทความตัวอย่างที่เขียนเพื่อแสดงการใช้ Jekyll กับธีม Minimal Mistakes]]></summary></entry></feed>

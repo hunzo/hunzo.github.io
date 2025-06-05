@@ -1,0 +1,279 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.1 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="th" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Linux LVM Management - My Blog</title>
+<meta name="description" content="Step by step to add disk to LVM and resize lv">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="th">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:title" content="Linux LVM Management">
+<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/example-post-3.html">
+
+
+  <meta property="og:description" content="Step by step to add disk to LVM and resize lv">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-06-05T10:30:00+07:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/example-post-3.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="My Blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          My Blog
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Linux LVM Management">
+    <meta itemprop="description" content="Step by step to add disk to LVM and resize lv">
+    <meta itemprop="datePublished" content="2025-06-05T10:30:00+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/blog/2025/06/05/example-post-3.html" itemprop="url">Linux LVM Management
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
+
+<h1 id="add-disk">Add Disk</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span> /dev/sdx and create new partition
+pvcreate /dev/sdx1
+vgdisplay
+</code></pre></div></div>
+
+<h1 id="create-lvm-volume">Create LVM Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+vgcreate volumn_name /dev/sdd
+</code></pre></div></div>
+
+<h1 id="extend-volume">Extend Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgextend vol_group_name /dev/sdx1
+</code></pre></div></div>
+
+<h1 id="create-logical-volume">Create Logical Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-l</span> 20m <span class="nt">-n</span> logical_vol vol_group
+lvcreate <span class="nt">-l</span> 100%FREE <span class="nt">-n</span> logical_vol vol_group
+lvdisplay
+</code></pre></div></div>
+
+<h1 id="extend-logical-volume">Extend Logical Volume</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+lvextend <span class="nt">-l</span> +100%FREE /dev/vol_group_name/logical_volume
+</code></pre></div></div>
+
+<blockquote>
+  <p>or</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+lvextend /dev/vol_group_name /dev/sdx1
+</code></pre></div></div>
+
+<h1 id="resize-lvm">Resize LVM</h1>
+
+<h2 id="ext-file-system">ext file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize2fs /dev/log_vol_group_name
+</code></pre></div></div>
+
+<h2 id="xfs-file-system">XFS file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+xfs_growfs /MOUNT_POINT
+</code></pre></div></div>
+
+<h2 id="ext4-file-system">ext4 file system</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize4fs /dev/log_vol_group_name
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-06-05T10:30:00+07:00">June 5, 2025</time></p>
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2025/06/02/example-post-2.html" class="pagination--pager" title="example post 2">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">My Blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
