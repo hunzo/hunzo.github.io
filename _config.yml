@@ -1,9 +1,13 @@
-title: "ชื่อเว็บไซต์ของคุณ"
-description: "คำอธิบายเว็บไซต์"
-author: "ชื่อของคุณ"
+title: "My Blog"
+description: "ตัวอย่างเว็บไซต์ด้วย Jekyll + Minimal Mistakes รองรับภาษาไทย"
 locale: th
+author: "Surapong Naowasate"
+url: "https://hunzo.github.io"
+baseurl: ""
 remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-feed
   - jekyll-include-cache
 markdown: kramdown
+theme: null
+include: ["_pages"]
