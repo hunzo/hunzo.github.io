@@ -10,16 +10,16 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Linux LVM Management - My Blog</title>
+<!-- begin _includes/seo.html --><title>Linux LVM Management - Takraw’s blog</title>
 <meta name="description" content="Step by step to add disk to LVM and resize lv">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="th">
-<meta property="og:site_name" content="My Blog">
+<meta property="og:site_name" content="Takraw's blog">
 <meta property="og:title" content="Linux LVM Management">
-<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/example-post-3.html">
+<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/lvm.html">
 
 
   <meta property="og:description" content="Step by step to add disk to LVM and resize lv">
@@ -37,7 +37,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/example-post-3.html">
+<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/lvm.html">
 
 
 
@@ -54,7 +54,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="My Blog Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Takraw's blog Feed">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
@@ -94,7 +94,7 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          My Blog
+          Takraw's blog
           
         </a>
         <ul class="visible-links"></ul>
@@ -131,7 +131,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/blog/2025/06/05/example-post-3.html" itemprop="url">Linux LVM Management
+            <a href="http://localhost:4000/blog/2025/06/05/lvm.html" itemprop="url">Linux LVM Management
 </a>
           </h1>
           
@@ -144,32 +144,32 @@
         
         <h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
 
-<h1 id="add-disk">Add Disk</h1>
+<h2 id="add-disk">Add Disk</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span> /dev/sdx and create new partition
 pvcreate /dev/sdx1
 vgdisplay
 </code></pre></div></div>
 
-<h1 id="create-lvm-volume">Create LVM Volume</h1>
+<h2 id="create-lvm-volume">Create LVM Volume</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 vgcreate volumn_name /dev/sdd
 </code></pre></div></div>
 
-<h1 id="extend-volume">Extend Volume</h1>
+<h2 id="extend-volume">Extend Volume</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgextend vol_group_name /dev/sdx1
 </code></pre></div></div>
 
-<h1 id="create-logical-volume">Create Logical Volume</h1>
+<h2 id="create-logical-volume">Create Logical Volume</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-l</span> 20m <span class="nt">-n</span> logical_vol vol_group
 lvcreate <span class="nt">-l</span> 100%FREE <span class="nt">-n</span> logical_vol vol_group
 lvdisplay
 </code></pre></div></div>
 
-<h1 id="extend-logical-volume">Extend Logical Volume</h1>
+<h2 id="extend-logical-volume">Extend Logical Volume</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 lvextend <span class="nt">-l</span> +100%FREE /dev/vol_group_name/logical_volume
@@ -183,20 +183,20 @@ lvextend <span class="nt">-l</span> +100%FREE /dev/vol_group_name/logical_volume
 lvextend /dev/vol_group_name /dev/sdx1
 </code></pre></div></div>
 
-<h1 id="resize-lvm">Resize LVM</h1>
+<h2 id="resize-lvm">Resize LVM</h2>
 
-<h2 id="ext-file-system">ext file system</h2>
+<h3 id="ext-file-system">ext file system</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize2fs /dev/log_vol_group_name
 </code></pre></div></div>
 
-<h2 id="xfs-file-system">XFS file system</h2>
+<h3 id="xfs-file-system">XFS file system</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 xfs_growfs /MOUNT_POINT
 </code></pre></div></div>
 
-<h2 id="ext4-file-system">ext4 file system</h2>
+<h3 id="ext4-file-system">ext4 file system</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize4fs /dev/log_vol_group_name
 </code></pre></div></div>
@@ -220,10 +220,10 @@ xfs_growfs /MOUNT_POINT
       
   <nav class="pagination">
     
-      <a href="/blog/2025/06/02/example-post-2.html" class="pagination--pager" title="example post 2">Previous</a>
+      <a href="/blog/2025/06/05/install-oracle-linux.html" class="pagination--pager" title="Install Oracle Linux 6.8">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/blog/2025/06/05/ruby-install.html" class="pagination--pager" title="Ruby Install">Next</a>
     
   </nav>
 
@@ -259,7 +259,7 @@ xfs_growfs /MOUNT_POINT
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">My Blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Takraw's blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

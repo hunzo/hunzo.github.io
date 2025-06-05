@@ -1,4 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T16:22:59+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<h1 id="install-oracle-linux-68">Install Oracle Linux 6.8</h1>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.27.1 by Michael Rose
+  Copyright 2013-2025 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="th" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Install Oracle Linux 6.8 - Takraw’s blog</title>
+<meta name="description" content="Install Oracle Linux 6.8">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="th">
+<meta property="og:site_name" content="Takraw's blog">
+<meta property="og:title" content="Install Oracle Linux 6.8">
+<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html">
+
+
+  <meta property="og:description" content="Install Oracle Linux 6.8">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-06-05T10:30:00+07:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Takraw's blog Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Takraw's blog
+          
+        </a>
+        <ul class="visible-links"></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Install Oracle Linux 6.8">
+    <meta itemprop="description" content="Install Oracle Linux 6.8">
+    <meta itemprop="datePublished" content="2025-06-05T10:30:00+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" itemprop="url">Install Oracle Linux 6.8
+</a>
+          </h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="install-oracle-linux-68">Install Oracle Linux 6.8</h1>
 
 <ul>
   <li>ref . <a href="https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6">install oracle linux 6.8 @oracle base</a></li>
@@ -346,88 +490,81 @@ eject
 <h2 id="automatic-setup">Automatic setup</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> yum <span class="nb">install </span>oracle-rdbms-server-11gR2-preinstall
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="oracle" /><category term="database" /><summary type="html"><![CDATA[Install Oracle Linux 6.8]]></summary></entry><entry><title type="html">Linux LVM Management</title><link href="http://localhost:4000/blog/2025/06/05/lvm.html" rel="alternate" type="text/html" title="Linux LVM Management" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/lvm</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/lvm.html"><![CDATA[<h1 id="step-by-step-to-add-disk-to-lvm-and-resize-lv">Step by step to add disk to LVM and resize lv</h1>
-
-<h2 id="add-disk">Add Disk</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fdisk <span class="nt">-l</span> /dev/sdx and create new partition
-pvcreate /dev/sdx1
-vgdisplay
 </code></pre></div></div>
 
-<h2 id="create-lvm-volume">Create LVM Volume</h2>
+        
+      </section>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-vgcreate volumn_name /dev/sdd
-</code></pre></div></div>
+      <footer class="page__meta">
+        
+        
 
-<h2 id="extend-volume">Extend Volume</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgextend vol_group_name /dev/sdx1
-</code></pre></div></div>
+        
 
-<h2 id="create-logical-volume">Create Logical Volume</h2>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-06-05T10:30:00+07:00">June 5, 2025</time></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvcreate <span class="nt">-l</span> 20m <span class="nt">-n</span> logical_vol vol_group
-lvcreate <span class="nt">-l</span> 100%FREE <span class="nt">-n</span> logical_vol vol_group
-lvdisplay
-</code></pre></div></div>
+      </footer>
 
-<h2 id="extend-logical-volume">Extend Logical Volume</h2>
+      
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-lvextend <span class="nt">-l</span> +100%FREE /dev/vol_group_name/logical_volume
-</code></pre></div></div>
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/blog/2025/06/05/lvm.html" class="pagination--pager" title="Linux LVM Management">Next</a>
+    
+  </nav>
 
-<blockquote>
-  <p>or</p>
-</blockquote>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-lvextend /dev/vol_group_name /dev/sdx1
-</code></pre></div></div>
+    </div>
 
-<h2 id="resize-lvm">Resize LVM</h2>
+    
+  </article>
 
-<h3 id="ext-file-system">ext file system</h3>
+  
+  
+</div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize2fs /dev/log_vol_group_name
-</code></pre></div></div>
+      
+    </div>
 
-<h3 id="xfs-file-system">XFS file system</h3>
+    
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-xfs_growfs /MOUNT_POINT
-</code></pre></div></div>
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
 
-<h3 id="ext4-file-system">ext4 file system</h3>
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resize4fs /dev/log_vol_group_name
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="lvm" /><summary type="html"><![CDATA[Step by step to add disk to LVM and resize lv]]></summary></entry><entry><title type="html">Ruby Install</title><link href="http://localhost:4000/blog/2025/06/05/ruby-install.html" rel="alternate" type="text/html" title="Ruby Install" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/ruby-install</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/ruby-install.html"><![CDATA[<h2 id="install-dependency">install dependency</h2>
+    
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> git ruby-full build-essential zlib1g-dev
-</code></pre></div></div>
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
 
-<h2 id="install-ruby">install ruby</h2>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Takraw's blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'# Install Ruby Gems to ~/.gem'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">echo</span> <span class="s1">'export GEM_HOME="$HOME/.gem"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.gem/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
-<span class="nb">source</span> ~/.bashrc
-</code></pre></div></div>
+      </footer>
+    </div>
 
-<h2 id="install-jekyll-and-bundler">install jekyll and bundler</h2>
+    
+  <script src="/assets/js/main.min.js"></script>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
-</code></pre></div></div>
 
-<h2 id="install-bundler">install bundler</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
-</code></pre></div></div>
 
-<h2 id="run-server">run server</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="gem" /><category term="ruby" /><summary type="html"><![CDATA[install dependency]]></summary></entry></feed>
+
+
+
+
+  </body>
+</html>

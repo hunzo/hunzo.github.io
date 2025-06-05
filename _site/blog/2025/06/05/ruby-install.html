@@ -10,34 +10,34 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>example post 2 - My Blog</title>
-<meta name="description" content="บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม">
+<!-- begin _includes/seo.html --><title>Ruby Install - Takraw’s blog</title>
+<meta name="description" content="install dependency">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="th">
-<meta property="og:site_name" content="My Blog">
-<meta property="og:title" content="example post 2">
-<meta property="og:url" content="http://localhost:4000/blog/2025/06/02/example-post-2.html">
+<meta property="og:site_name" content="Takraw's blog">
+<meta property="og:title" content="Ruby Install">
+<meta property="og:url" content="http://localhost:4000/blog/2025/06/05/ruby-install.html">
 
 
-  <meta property="og:description" content="บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2025-06-02T10:30:00+07:00">
+  <meta property="og:description" content="install dependency">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2025/06/02/example-post-2.html">
+
+  <meta property="article:published_time" content="2025-06-05T10:30:00+07:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2025/06/05/ruby-install.html">
 
 
 
@@ -54,7 +54,7 @@
 
 
 
-  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="My Blog Feed">
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Takraw's blog Feed">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script>
@@ -94,7 +94,7 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">
-          My Blog
+          Takraw's blog
           
         </a>
         <ul class="visible-links"></ul>
@@ -122,16 +122,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="example post 2">
-    <meta itemprop="description" content="  บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม">
-    <meta itemprop="datePublished" content="2025-06-02T10:30:00+07:00">
+    <meta itemprop="headline" content="Ruby Install">
+    <meta itemprop="description" content="install dependency">
+    <meta itemprop="datePublished" content="2025-06-05T10:30:00+07:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="http://localhost:4000/blog/2025/06/02/example-post-2.html" itemprop="url">example post 2
+            <a href="http://localhost:4000/blog/2025/06/05/ruby-install.html" itemprop="url">Ruby Install
 </a>
           </h1>
           
@@ -142,13 +142,33 @@
 
       <section class="page__content" itemprop="text">
         
-        <blockquote>
-  <p>บทความตัวอย่างที่สอง พร้อมโค้ดและสไตล์ที่สวยงาม</p>
-</blockquote>
+        <h2 id="install-dependency">install dependency</h2>
 
-<h2 id="โค้ดตัวอย่าง">โค้ดตัวอย่าง</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> git ruby-full build-essential zlib1g-dev
+</code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+<h2 id="install-ruby">install ruby</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'# Install Ruby Gems to ~/.gem'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export GEM_HOME="$HOME/.gem"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.gem/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+<h2 id="install-jekyll-and-bundler">install jekyll and bundler</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<h2 id="install-bundler">install bundler</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+</code></pre></div></div>
+
+<h2 id="run-server">run server</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
 </code></pre></div></div>
 
         
@@ -161,7 +181,7 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-06-02T10:30:00+07:00">June 2, 2025</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-06-05T10:30:00+07:00">June 5, 2025</time></p>
 
       </footer>
 
@@ -170,10 +190,10 @@
       
   <nav class="pagination">
     
-      <a href="/blog/2025/06/01/example-post-1.html" class="pagination--pager" title="example post 1">Previous</a>
+      <a href="/blog/2025/06/05/lvm.html" class="pagination--pager" title="Linux LVM Management">Previous</a>
     
     
-      <a href="/blog/2025/06/05/example-post-3.html" class="pagination--pager" title="Linux LVM Management">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -209,7 +229,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">My Blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Takraw's blog</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
