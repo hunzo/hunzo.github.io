@@ -9,5 +9,5 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 markdown: kramdown
-theme: null
+theme: air
 include: ["_pages"]
