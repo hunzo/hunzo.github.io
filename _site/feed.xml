@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-05T16:31:32+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-16T13:49:49+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<blockquote>
   <p>ref . <a href="https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6">install oracle linux 6.8 @oracle base</a></p>
 </blockquote>
 
@@ -435,4 +435,197 @@ xfs_growfs /MOUNT_POINT
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> /etc/machine-id
 <span class="nb">sudo touch</span> /etc/machine-id
 <span class="nb">sudo chmod </span>644 /etc/machine-id
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="vmware" /><summary type="html"><![CDATA[Run script, shutdown and convert to template]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="vmware" /><summary type="html"><![CDATA[Run script, shutdown and convert to template]]></summary></entry><entry><title type="html">ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server</title><link href="http://localhost:4000/blog/2025/06/05/npas-certificates.html" rel="alternate" type="text/html" title="ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/npas-certificates</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/npas-certificates.html"><![CDATA[<h1 id="certificate-template-for-8021x-on-windows-server">Certificate Template for 802.1X on Windows Server</h1>
+
+<p>เอกสารนี้สรุปขั้นตอนทั้งหมดสำหรับการสร้าง, ตั้งค่า, และแจกจ่าย Certificate สำหรับการยืนยันตัวตนผ่านเครือข่ายด้วยมาตรฐาน 802.1X โดยใช้ Active Directory Certificate Services (AD CS) บน Windows Server</p>
+
+<hr />
+
+<h2 id="-1-สิ่งที่ต้องมีก่อน-prerequisites">📋 1. สิ่งที่ต้องมีก่อน (Prerequisites)</h2>
+
+<p>ก่อนเริ่มต้น ต้องแน่ใจว่าระบบของคุณมีองค์ประกอบต่อไปนี้ครบถ้วน:</p>
+
+<ol>
+  <li><strong>Active Directory Domain Services (AD DS):</strong> ติดตั้งและทำงานได้อย่างสมบูรณ์</li>
+  <li><strong>Active Directory Certificate Services (AD CS):</strong> ติดตั้ง Role นี้และตั้งค่าเป็น <strong>Enterprise CA</strong> (Certificate Authority) เรียบร้อยแล้ว</li>
+  <li><strong>Network Policy Server (NPS):</strong> ติดตั้ง Role นี้บนเซิร์ฟเวอร์ (อาจจะเป็นเครื่องเดียวกับ CA หรือคนละเครื่องก็ได้)</li>
+</ol>
+
+<hr />
+
+<h2 id="-2-การสร้าง-certificate-templates">📝 2. การสร้าง Certificate Templates</h2>
+
+<p>เราจะสร้าง Template ที่จำเป็น 2 ประเภท คือสำหรับ RADIUS Server และสำหรับ Client</p>
+
+<h3 id="️-21-สร้าง-template-สำหรับ-radius-nps-server">🖥️ 2.1 สร้าง Template สำหรับ RADIUS (NPS) Server</h3>
+
+<p>Template นี้ใช้สำหรับให้ NPS Server ยืนยันตัวตนกับเครื่องลูกข่าย</p>
+
+<ol>
+  <li>บนเซิร์ฟเวอร์ที่ติดตั้ง AD CS, เปิด <strong>Certificate Authority</strong> (จาก Server Manager &gt; Tools)</li>
+  <li>คลิกขวาที่โฟลเดอร์ <code class="language-plaintext highlighter-rouge">Certificate Templates</code> และเลือก <strong>Manage</strong></li>
+  <li>ในหน้าต่าง <code class="language-plaintext highlighter-rouge">Certificate Templates Console</code>, ค้นหา Template ชื่อ <strong>RAS and IAS Server</strong></li>
+  <li>คลิกขวาที่ <strong>RAS and IAS Server</strong> และเลือก <strong>Duplicate Template</strong></li>
+  <li>ตั้งค่าในแท็บต่างๆ ดังนี้:
+    <ul>
+      <li><strong>แท็บ General:</strong>
+        <ul>
+          <li><strong>Template display name:</strong> <code class="language-plaintext highlighter-rouge">802.1X RADIUS Server</code> (หรือชื่ออื่นที่เข้าใจง่าย)</li>
+          <li><strong>Validity period:</strong> <code class="language-plaintext highlighter-rouge">2 years</code> (แนะนำ)</li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Request Handling:</strong>
+        <ul>
+          <li>(แนะนำ) ติ๊กถูกที่ <code class="language-plaintext highlighter-rouge">Allow private key to be exported</code> เพื่อความสะดวกในการสำรองข้อมูลหรือย้ายเซิร์ฟเวอร์</li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Subject Name:</strong>
+        <ul>
+          <li>เลือก <strong>Build from this Active Directory information</strong></li>
+          <li><strong>Subject name format:</strong> เลือก <strong>DNS name</strong></li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Security:</strong>
+        <ul>
+          <li>คลิก <strong>Add…</strong> และเพิ่มกลุ่ม <code class="language-plaintext highlighter-rouge">RAS and IAS Servers</code> (หรือเพิ่ม Computer Account ของ NPS Server โดยตรง)</li>
+          <li>เลือกกลุ่มที่เพิ่มเข้ามา แล้วให้สิทธิ์ (Allow) <code class="language-plaintext highlighter-rouge">Read</code> และ <code class="language-plaintext highlighter-rouge">Enroll</code></li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Extensions:</strong>
+        <ul>
+          <li>ตรวจสอบว่าใน <strong>Application Policies</strong> มี <code class="language-plaintext highlighter-rouge">Server Authentication</code> อยู่</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>คลิก <strong>Apply</strong> และ <strong>OK</strong></li>
+</ol>
+
+<h3 id="-22-สร้าง-template-สำหรับ-client-computer-authentication">👥 2.2 สร้าง Template สำหรับ Client (Computer Authentication)</h3>
+
+<p>Template นี้ใช้สำหรับแจกจ่ายให้เครื่องลูกข่ายใน Domain โดยอัตโนมัติ (ปลอดภัยที่สุด)</p>
+
+<ol>
+  <li>ในหน้าต่าง <code class="language-plaintext highlighter-rouge">Certificate Templates Console</code> เดิม, ค้นหา Template ชื่อ <strong>Workstation Authentication</strong></li>
+  <li>คลิกขวาที่ <strong>Workstation Authentication</strong> และเลือก <strong>Duplicate Template</strong></li>
+  <li>ตั้งค่าในแท็บต่างๆ ดังนี้:
+    <ul>
+      <li><strong>แท็บ General:</strong>
+        <ul>
+          <li><strong>Template display name:</strong> <code class="language-plaintext highlighter-rouge">802.1X Client Authentication</code></li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Request Handling:</strong>
+        <ul>
+          <li>
+            <blockquote>
+              <p><strong>สำคัญ:</strong> <strong>ไม่ต้องติ๊ก</strong> <code class="language-plaintext highlighter-rouge">Allow private key to be exported</code> เพื่อความปลอดภัยสูงสุด ป้องกันการคัดลอก Certificate ไปยังเครื่องที่ไม่ได้รับอนุญาต</p>
+            </blockquote>
+          </li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Subject Name:</strong>
+        <ul>
+          <li>เลือก <strong>Build from this Active Directory information</strong></li>
+          <li><strong>Subject name format:</strong> เลือก <strong>DNS name</strong></li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Security:</strong>
+        <ul>
+          <li>คลิก <strong>Add…</strong> และเพิ่มกลุ่ม <code class="language-plaintext highlighter-rouge">Domain Computers</code></li>
+          <li>เลือกกลุ่ม <code class="language-plaintext highlighter-rouge">Domain Computers</code> และให้สิทธิ์ (Allow) <code class="language-plaintext highlighter-rouge">Read</code>, <code class="language-plaintext highlighter-rouge">Enroll</code>, และ <strong><code class="language-plaintext highlighter-rouge">Autoenroll</code></strong>
+            <blockquote>
+              <p><strong>สำคัญ:</strong> การให้สิทธิ์ <code class="language-plaintext highlighter-rouge">Autoenroll</code> เป็นหัวใจสำคัญที่ทำให้เครื่องลูกข่ายได้รับ Certificate โดยอัตโนมัติผ่าน Group Policy</p>
+            </blockquote>
+          </li>
+        </ul>
+      </li>
+      <li><strong>แท็บ Extensions:</strong>
+        <ul>
+          <li>ตรวจสอบว่าใน <strong>Application Policies</strong> มี <code class="language-plaintext highlighter-rouge">Client Authentication</code> อยู่</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>คลิก <strong>Apply</strong> และ <strong>OK</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="-3-การเปิดใช้งาน-template-ที่สร้างขึ้น-issue-templates">📜 3. การเปิดใช้งาน Template ที่สร้างขึ้น (Issue Templates)</h2>
+
+<p>หลังจากสร้าง Template แล้ว ต้องสั่งให้ CA เริ่มออก Certificate ตาม Template เหล่านี้</p>
+
+<ol>
+  <li>กลับไปที่หน้าต่างหลักของ <strong>Certificate Authority</strong></li>
+  <li>คลิกขวาที่โฟลเดอร์ <code class="language-plaintext highlighter-rouge">Certificate Templates</code> -&gt; <strong>New</strong> -&gt; <strong>Certificate Template to Issue</strong></li>
+  <li>ในหน้าต่างที่ปรากฏขึ้น, เลือก Template ทั้ง 2 อันที่เราเพิ่งสร้าง:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">802.1X RADIUS Server</code></li>
+      <li><code class="language-plaintext highlighter-rouge">802.1X Client Authentication</code></li>
+    </ul>
+  </li>
+  <li>คลิก <strong>OK</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="-4-การนำไปใช้งานและแจกจ่าย-deployment">🚀 4. การนำไปใช้งานและแจกจ่าย (Deployment)</h2>
+
+<h3 id="️-41-การติดตั้ง-certificate-บน-nps-server">⚙️ 4.1 การติดตั้ง Certificate บน NPS Server</h3>
+
+<ol>
+  <li>บน NPS Server, เปิด <strong>MMC</strong> โดยกด <code class="language-plaintext highlighter-rouge">Win + R</code> พิมพ์ <code class="language-plaintext highlighter-rouge">mmc</code> แล้ว Enter</li>
+  <li>ไปที่ <strong>File</strong> &gt; <strong>Add/Remove Snap-in…</strong></li>
+  <li>เลือก <strong>Certificates</strong> -&gt; <strong>Add</strong> -&gt; เลือก <strong>Computer account</strong> -&gt; <strong>Next</strong> -&gt; <strong>Finish</strong> -&gt; <strong>OK</strong></li>
+  <li>ในหน้าต่าง MMC, ขยาย <strong>Certificates (Local Computer)</strong> -&gt; <strong>Personal</strong></li>
+  <li>คลิกขวาที่โฟลเดอร์ <strong>Certificates</strong> -&gt; <strong>All Tasks</strong> -&gt; <strong>Request New Certificate…</strong></li>
+  <li>คลิก <strong>Next</strong> สองครั้ง (เลือก Active Directory Enrollment Policy)</li>
+  <li>ติ๊กเลือก Template <strong><code class="language-plaintext highlighter-rouge">802.1X RADIUS Server</code></strong> ที่เราสร้างไว้</li>
+  <li>คลิก <strong>Enroll</strong></li>
+</ol>
+
+<h3 id="-42-การตั้งค่าให้-client-ได้รับ-certificate-อัตโนมัติ-group-policy">💻 4.2 การตั้งค่าให้ Client ได้รับ Certificate อัตโนมัติ (Group Policy)</h3>
+
+<ol>
+  <li>เปิด <strong>Group Policy Management</strong></li>
+  <li>สร้าง GPO ใหม่ (หรือแก้ไข GPO ที่มีอยู่) ที่ลิงก์ไปยัง OU ที่มี Computer Accounts ของเครื่องลูกข่าย</li>
+  <li>แก้ไข GPO นั้น และไปที่ Path:
+<code class="language-plaintext highlighter-rouge">Computer Configuration -&gt; Policies -&gt; Windows Settings -&gt; Security Settings -&gt; Public Key Policies</code></li>
+  <li>ในหน้าต่างด้านขวา, ดับเบิลคลิกที่ <strong>Certificate Services Client - Auto-Enrollment</strong></li>
+  <li>ตั้งค่าดังนี้:
+    <ul>
+      <li><strong>Configuration Model:</strong> <code class="language-plaintext highlighter-rouge">Enabled</code></li>
+      <li>ติ๊กถูกที่ <code class="language-plaintext highlighter-rouge">Renew expired certificates, update pending certificates, and remove revoked certificates</code></li>
+      <li>ติ๊กถูกที่ <code class="language-plaintext highlighter-rouge">Update certificates that use certificate templates</code></li>
+    </ul>
+  </li>
+  <li>คลิก <strong>Apply</strong> และ <strong>OK</strong></li>
+</ol>
+
+<p>หลังจากนั้น เมื่อเครื่อง Client ทำการ <code class="language-plaintext highlighter-rouge">gpupdate /force</code> หรือมีการ Restart ก็จะได้รับ Certificate <code class="language-plaintext highlighter-rouge">802.1X Client Authentication</code> โดยอัตโนมัติ</p>
+
+<h3 id="-43-กรณีพิเศษ-การ-export-certificate-เพื่อติดตั้งด้วยตนเอง">🔧 4.3 กรณีพิเศษ: การ Export Certificate เพื่อติดตั้งด้วยตนเอง</h3>
+
+<p>ใช้สำหรับอุปกรณ์นอกโดเมน (Non-Domain Joined) หรืออุปกรณ์พิเศษ (BYOD, IoT)</p>
+
+<blockquote>
+  <p><strong>Best Practice:</strong> ควรสร้าง Template ใหม่สำหรับกรณีนี้โดยเฉพาะ อย่าแก้ไข Template หลักที่ใช้กับเครื่องในโดเมน</p>
+</blockquote>
+
+<ol>
+  <li><strong>สร้าง Template ใหม่:</strong> ทำซ้ำขั้นตอนที่ <strong>2.2</strong> แต่ตั้งชื่อว่า <code class="language-plaintext highlighter-rouge">802.1X Manual Install</code></li>
+  <li><strong>ตั้งค่าให้ Export ได้:</strong> ในแท็บ <strong>Request Handling</strong> ของ Template ใหม่นี้ ให้ติ๊กถูกที่ <strong><code class="language-plaintext highlighter-rouge">Allow private key to be exported</code></strong></li>
+  <li><strong>ออก Certificate:</strong> ทำการ Issue Template ใหม่นี้ตามขั้นตอนที่ <strong>3</strong></li>
+  <li><strong>ร้องขอและ Export:</strong>
+    <ul>
+      <li>จากเครื่องในโดเมน, ใช้ <code class="language-plaintext highlighter-rouge">certlm.msc</code> ร้องขอ Certificate จาก Template <code class="language-plaintext highlighter-rouge">802.1X Manual Install</code></li>
+      <li>หลังจากได้รับแล้ว ให้คลิกขวาที่ Certificate -&gt; <strong>All Tasks</strong> -&gt; <strong>Export…</strong></li>
+      <li>ใน Wizard ให้เลือก <strong>Yes, export the private key</strong></li>
+      <li>เลือก Format เป็น <strong>.PFX</strong>, ตั้งรหัสผ่านที่คาดเดายาก</li>
+    </ul>
+  </li>
+  <li><strong>นำไปติดตั้ง:</strong> นำไฟล์ <code class="language-plaintext highlighter-rouge">.pfx</code> ที่ได้ไปติดตั้งบนอุปกรณ์เป้าหมาย โดยจะต้องใส่รหัสผ่านที่ตั้งไว้</li>
+</ol>
+
+<hr />]]></content><author><name>takraw</name></author><category term="blog" /><category term="802.1x" /><category term="radius" /><category term="window" /><category term="AD" /><summary type="html"><![CDATA[Certificate Template for 802.1X on Windows Server]]></summary></entry></feed>
