@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-16T13:49:49+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-06-16T16:01:51+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Takraw’s blog</title><subtitle>blog เก็บ scripts ,, ขอกาวป๋องดิ</subtitle><author><name>Surapong Naowasate</name></author><entry><title type="html">Install Oracle Linux 6.8</title><link href="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html" rel="alternate" type="text/html" title="Install Oracle Linux 6.8" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/install-oracle-linux</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/install-oracle-linux.html"><![CDATA[<blockquote>
   <p>ref . <a href="https://oracle-base.com/articles/11g/oracle-db-11gr2-installation-on-oracle-linux-6">install oracle linux 6.8 @oracle base</a></p>
 </blockquote>
 
@@ -435,7 +435,59 @@ xfs_growfs /MOUNT_POINT
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> /etc/machine-id
 <span class="nb">sudo touch</span> /etc/machine-id
 <span class="nb">sudo chmod </span>644 /etc/machine-id
-</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="vmware" /><summary type="html"><![CDATA[Run script, shutdown and convert to template]]></summary></entry><entry><title type="html">ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server</title><link href="http://localhost:4000/blog/2025/06/05/npas-certificates.html" rel="alternate" type="text/html" title="ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/npas-certificates</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/npas-certificates.html"><![CDATA[<h1 id="certificate-template-for-8021x-on-windows-server">Certificate Template for 802.1X on Windows Server</h1>
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="linux" /><category term="vmware" /><summary type="html"><![CDATA[Run script, shutdown and convert to template]]></summary></entry><entry><title type="html">Kubernetes Monitoring Install</title><link href="http://localhost:4000/blog/2025/06/05/k8s-monitor.html" rel="alternate" type="text/html" title="Kubernetes Monitoring Install" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/k8s-monitor</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/k8s-monitor.html"><![CDATA[<h2 id="add-repo">Add Repo</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+</code></pre></div></div>
+
+<h2 id="update-repo">Update Repo</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo update
+</code></pre></div></div>
+
+<h2 id="install-metrics-server">Install Metrics server</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>metrics-server metrics-server/metrics-server <span class="nt">-n</span> kube-system <span class="se">\</span>
+  <span class="nt">--set</span> <span class="nv">args</span><span class="o">={</span><span class="nt">--kubelet-insecure-tls</span><span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="install-prometheus">Install Prometheus</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>prometheus prometheus-community/kube-prometheus-stack <span class="se">\</span>
+  <span class="nt">--namespace</span> monitoring <span class="nt">--create-namespace</span> <span class="se">\</span>
+  <span class="nt">--set</span> kubeStateMetrics.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">--set</span> grafana.enabled<span class="o">=</span><span class="nb">false</span>
+</code></pre></div></div>
+
+<h2 id="install-grafana">Install Grafana</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>grafana grafana/grafana <span class="se">\</span>
+  <span class="nt">--namespace</span> monitoring <span class="se">\</span>
+  <span class="nt">--set</span> <span class="nv">adminPassword</span><span class="o">=</span><span class="s1">'admin123'</span> <span class="se">\</span>
+  <span class="nt">--set</span> service.type<span class="o">=</span>NodePort
+</code></pre></div></div>
+
+<h2 id="get-grafana-url">Get Grafana URL</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">NODE_PORT</span><span class="o">=</span><span class="si">$(</span>kubectl get <span class="nt">--namespace</span> monitoring <span class="nt">-o</span> <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.spec.ports[0].nodePort}"</span> services grafana<span class="si">)</span>
+<span class="nb">export </span><span class="nv">NODE_IP</span><span class="o">=</span><span class="si">$(</span>kubectl get nodes <span class="nt">--namespace</span> monitoring <span class="nt">-o</span> <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.items[0].status.addresses[0].address}"</span><span class="si">)</span>
+<span class="nb">echo </span>http://<span class="nv">$NODE_IP</span>:<span class="nv">$NODE_PORT</span>
+</code></pre></div></div>
+
+<h2 id="prometheus-data-source">Prometheus Data Source</h2>
+
+<blockquote>
+  <p>http://prometheus-kube-prometheus-prometheus.monitoring.svc:9090</p>
+</blockquote>
+
+<h2 id="import-dashboard">Import Dashboard</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1860 (Kubernetes cluster monitoring)
+6417 (Kubernetes pod monitoring)
+315 (Node Exporter)
+</code></pre></div></div>]]></content><author><name>takraw</name></author><category term="blog" /><category term="kubernetes" /><category term="linux" /><category term="monitor" /><summary type="html"><![CDATA[Add Repo]]></summary></entry><entry><title type="html">ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server</title><link href="http://localhost:4000/blog/2025/06/05/npas-certificates.html" rel="alternate" type="text/html" title="ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server" /><published>2025-06-05T10:30:00+07:00</published><updated>2025-06-05T10:30:00+07:00</updated><id>http://localhost:4000/blog/2025/06/05/npas-certificates</id><content type="html" xml:base="http://localhost:4000/blog/2025/06/05/npas-certificates.html"><![CDATA[<h1 id="certificate-template-for-8021x-on-windows-server">Certificate Template for 802.1X on Windows Server</h1>
 
 <p>เอกสารนี้สรุปขั้นตอนทั้งหมดสำหรับการสร้าง, ตั้งค่า, และแจกจ่าย Certificate สำหรับการยืนยันตัวตนผ่านเครือข่ายด้วยมาตรฐาน 802.1X โดยใช้ Active Directory Certificate Services (AD CS) บน Windows Server</p>
 

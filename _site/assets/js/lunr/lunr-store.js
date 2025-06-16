@@ -23,6 +23,12 @@ var store = [{
         "url": "/blog/2025/06/05/vmware-ubuntu-template.html",
         "teaser": null
       },{
+        "title": "Kubernetes Monitoring Install",
+        "excerpt":"Add Repo helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts helm repo add grafana https://grafana.github.io/helm-charts Update Repo helm repo update Install Metrics server helm install metrics-server metrics-server/metrics-server -n kube-system \\ --set args={--kubelet-insecure-tls} Install Prometheus helm install prometheus prometheus-community/kube-prometheus-stack \\ --namespace monitoring --create-namespace \\ --set kubeStateMetrics.enabled=true \\ --set grafana.enabled=false...","categories": ["blog"],
+        "tags": ["kubernetes","linux","monitor"],
+        "url": "/blog/2025/06/05/k8s-monitor.html",
+        "teaser": null
+      },{
         "title": "ขั้นตอนการตั้งค่า Certificate Template สำหรับ 802.1X บน Windows Server",
         "excerpt":"Certificate Template for 802.1X on Windows Server เอกสารนี้สรุปขั้นตอนทั้งหมดสำหรับการสร้าง, ตั้งค่า, และแจกจ่าย Certificate สำหรับการยืนยันตัวตนผ่านเครือข่ายด้วยมาตรฐาน 802.1X โดยใช้ Active Directory Certificate Services (AD CS) บน Windows Server 📋 1. สิ่งที่ต้องมีก่อน (Prerequisites) ก่อนเริ่มต้น ต้องแน่ใจว่าระบบของคุณมีองค์ประกอบต่อไปนี้ครบถ้วน: Active Directory Domain Services (AD DS): ติดตั้งและทำงานได้อย่างสมบูรณ์ Active Directory Certificate Services (AD CS): ติดตั้ง Role นี้และตั้งค่าเป็น Enterprise CA (Certificate Authority) เรียบร้อยแล้ว...","categories": ["blog"],
         "tags": ["802.1x","radius","window","AD"],
